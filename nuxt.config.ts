@@ -31,13 +31,13 @@ export default defineNuxtConfig({
   },
   modules: [
     'nuxt-icon',
-  //   [
+    [
        //Nuxt Robots
-  //     '@nuxtjs/robots',
-  //     {
-  //       UserAgent: "*",
-  //       Disallow: "",
-  //     }
-  //   ],
+      '@nuxtjs/robots',
+      {
+        UserAgent: "*",
+        Disallow: "",
+      }
+    ],
   ],
 });
