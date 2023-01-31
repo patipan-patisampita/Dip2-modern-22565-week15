@@ -29,6 +29,7 @@ defineProps<{
       >
       {{ excerpt }}
       </p>
+      
       <NuxtLink
         v-if="slug"
         class="inline-flex items-center border-b-2 blog__readmore border-primary-500"

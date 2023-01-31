@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    Categories Pages
+    Page: foo
   </div>
 </template>
 
