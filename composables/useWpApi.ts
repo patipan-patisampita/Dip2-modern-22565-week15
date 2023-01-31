@@ -1,15 +1,20 @@
-import {Post} from '~~/types/post'
+// Wordpress composables
+// A collection of composable functions for interacting with the Wordpress API
+// https://developer.wordpress.org/rest-api/reference/
 
-export default()=>{
-    const config = useRuntimeConfig()
-    const WP_URL: string = config.wpUri
+import { Post } from '~~/types/post';
+
+export default () => {
+
+    const config = useRuntimeConfig();
+    const WP_URL: string = config.wpUri;
 
     const get = async <T>(endpoint: string) => {
         return useFetch<T>(`${WP_URL}/wp-json/wp/v2/${endpoint}`);
     }
 
-      // Get all posts
-      const getPosts = async (
+    // Get all posts
+    const getPosts = async (
         category?: number,
         page: number = 1,
         perPage: number = 20,
@@ -44,4 +49,5 @@ export default()=>{
         getCategories,
         getCategory,
     }
+
 }

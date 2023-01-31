@@ -1,10 +1,13 @@
 <script lang="ts" setup>
+// Call API use fetch
+const { data: posts, refresh, error } = await useWpApi().getPosts();
+
 useHead({
   title: "Home",
   meta: [
     {
       name: "description",
-      content: "Home Nuxt 3, IT Trat Department",
+      content: "Home Nuxt 3, IT Genius Engineering",
     },
     {
       name: "keywords",
@@ -16,23 +19,25 @@ useHead({
 
 <template>
   <main>
-    <section class="w-screen">
-      <div class="container flex flex-wrap items-center p-3 py-2 mx-auto">
-        <div class="avatar relative h-[200px] w-[200px] rounded overflow-hidden mr-10 mb-5 sm:mb-0">
+    <section class="bg-gray-100">
+      <div class="container flex flex-wrap items-center px-20 py-20 mx-auto">
+        <div
+          class="avatar relative h-[200px] w-[200px] rounded overflow-hidden mr-10 mb-5 sm:mb-0 shadow-xl"
+        >
           <img
             src="~/assets/images/elon.png"
             alt="Elon Mask"
-            class="absolute object-cover w-full h-full rounded-lg animate-pulse"
+            class="absolute object-cover w-full h-full"
           />
         </div>
         <div>
-          <h1 class="text-2xl font-bold">Hi, I am Elon Mask</h1>
+          <h1 class="text-2xl font-bold">Hi, I am Elon</h1>
           <p class="mt-3 mb-5 hero__des">
             I built SpaceX, acquired Tesla, Twitter. <br />In my free time i
             sh*t post on twitter.
           </p>
           <a
-            href="https://twitter.com/elonmusk"
+            href="https://twitter.com/elonmusk?"
             class="inline-flex items-center gap-2 px-4 py-2 text-white rounded bg-sky-500 hover:bg-primary-600"
           >
             <svg
@@ -52,6 +57,23 @@ useHead({
         </div>
       </div>
     </section>
+
+    <!-- Blog Section Starts -->
+    <section class="container px-20 mx-auto">
+      <div class="container py-10">
+        <div class="grid gap-10 sm:grid-cols-3">
+          <BlogGrid
+            v-for="post in posts"
+            :key="post.id"
+            :title="post.title.rendered"
+            :image="post._embedded['wp:featuredmedia'][0]?.source_url"
+            :excerpt="post.excerpt.rendered"
+            :slug="post.slug"
+          ></BlogGrid>
+        </div>
+      </div>
+    </section>
+    <!-- Blog Section Ends  -->
   </main>
 </template>
 
