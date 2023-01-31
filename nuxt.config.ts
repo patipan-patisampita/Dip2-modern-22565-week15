@@ -40,4 +40,9 @@ export default defineNuxtConfig({
     //   }
     // ],
   ],
+  runtimeConfig:{
+    public:{
+      wpUri: process.env.WP_URI,
+    }
+  }
 });
